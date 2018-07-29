@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  </head>
+  <body>
+  <nav class="navbar navbar-expand-sm bg-light navbar-light">
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+      <a class="navbar-brand" href="{% url 'index' %}">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'app1:register' %}">Register</a>
+    </li>
+    {% if user.is_authenticated %}  <!-- if user is successfully authenticate mtlb if login -->
+    <li class="nav-item">
+      <a class="nav-link" href="{% url  'logout_form' %}">logout</a>
+    </li>
+    {% else %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'app1:login_form' %}">login</a>
+    </li>
+    {% endif %}
+
+
+  </ul>
+</nav>
+<div class="container">
+  {% block body_block %}
+  {% endblock %}
+
+</div>
+
+
+  </body>
+</html>
